@@ -11,13 +11,15 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 % title info
-\title{Data Management}
+\title{Steps toward reproducible research}
 \author{\href{https://kbroman.org}{Karl Broman}}
 \institute{Biostatistics \& Medical Informatics \\ Univ.\ Wisconsin{\textendash}Madison}
 \date{\href{https://kbroman.org}{\tt \scriptsize \color{foreground} kbroman.org}
+\\[-4pt]
+\href{https://twitter.com/kwbroman}{\tt \scriptsize \color{foreground} @kwbroman}
 \\[2pt]
-\scriptsize {\lolit Slides:} \href{https://bit.ly/datamgmt2018}{\tt \scriptsize
-  \color{foreground} bit.ly/datamgmt2018}
+\scriptsize {\lolit Slides:} \href{https://bit.ly/cmp2018}{\tt \scriptsize
+  \color{foreground} bit.ly/cmp2018}
 }
 
 
@@ -34,15 +36,6 @@
 } }
 
 
-\begin{frame}[c]{Outline}
-
-  \bbi
-\item Organizing data within spreadsheets
-\item File organization and naming
-\item Data cleaning
-  \ei
-
-\end{frame}
 
 
 
@@ -126,6 +119,56 @@ Organize data for computers
 \vspace{10mm}
 
 \end{frame}
+
+
+\begin{frame}{Fill in all cells}
+
+\vspace{7mm}
+
+\figh{Figs/spreadsheet_fill_in_all_cells.pdf}{0.6}
+
+\vspace{10mm}
+
+\end{frame}
+
+
+
+
+\begin{frame}{Make it a rectangle}
+
+\vspace{7mm}
+
+\figh{Figs/spreadsheet_make_rectangle.pdf}{0.6}
+
+\vspace{10mm}
+
+\end{frame}
+
+
+
+\begin{frame}{No calculations with the raw data}
+
+\vspace{7mm}
+
+\figh{Figs/spreadsheet_no_calculations.pdf}{0.6}
+
+\vspace{10mm}
+
+\end{frame}
+
+
+
+
+\begin{frame}{Use one header row}
+
+\vspace{7mm}
+
+\figh{Figs/spreadsheet_one_header.pdf}{0.6}
+
+\vspace{10mm}
+
+\end{frame}
+
 
 
 
@@ -390,7 +433,7 @@ Data4Tram/        PepIns_2012-02-09/
 
 
 
-\begin{frame}[c]{A few more things}
+\begin{frame}[c]{Also}
 
   \bbi
 \item Documentation
@@ -405,65 +448,12 @@ Data4Tram/        PepIns_2012-02-09/
 \item Yet another spreadsheet
 \item Data dictionary: explain variables, abbreviations, units, codes
   \ei
-\item Versions
-  \bi
-  \item Save everything
-  \item Number files like {\tt \_v1}, {\tt \_v2}, ...
-  \ei
-\item Backups
-  \bi
-\item Multiple places (external drives, cloud, server)
-\item Needs to be automatic
-  \ei
   \ei
 
 \end{frame}
 
 
 
-
-\begin{frame}[c]{3. Data cleaning}
-
-  \bbi
-\item What might have gone wrong?
-\item How could it be revealed?
-\item Make lots of plots
-  \bi
-\item scatterplots
-\item plots against time
-\item consider taking logs
-  \ei
-\item Check consistency between files
-  \ei
-
-\end{frame}
-
-
-\begin{frame}[c]{Batch effect}
-
-
-\only<1>{\figh{Figs/il3.pdf}{0.85}}
-\only<2>{\figh{Figs/il3_log.pdf}{0.85}}
-
-
-\end{frame}
-
-
-
-\begin{frame}[c]{Messed up units}
-
-\figh{Figs/adipose_weight.pdf}{0.85}
-
-
-\end{frame}
-
-
-
-\begin{frame}[c]{Outliers}
-
-\figh{Figs/body_weight.pdf}{0.85}
-
-\end{frame}
 
 
 
@@ -486,19 +476,21 @@ will be reproducible.
 
 
 
-\begin{frame}[c]{Resources}
+\begin{frame}[c]{}
 
-  \bbi
-\item These slides: \href{https://bit.ly/datamgmt2018}{\tt bit.ly/datamgmt2018} \quad
+\Large
+
+Slides: \href{https://bit.ly/steps2rr}{\tt bit.ly/steps2rr} \quad
 \includegraphics[height=5mm]{Figs/cc-zero.png}
-\item \href{https://www.amazon.com/gp/product/B019NDNOMA?ie=UTF8&tag=7210-20}{Briney (2015) Data management for researchers}
-\item Research Data Services,
-  \href{http://researchdata.wisc.edu/}{\tt researchdata.wisc.edu}
-\item Data Science Hub,
-  \href{https://datascience.wisc.edu/}{\tt datascience.wisc.edu}
-\item Data Carpentry workshops,
-  \href{https://datacarpentry.org/}{\tt datacarpentry.org}
-  \ei
+
+\vspace{10mm}
+
+\href{https://kbroman.org}{\tt kbroman.org}
+
+\vspace{10mm}
+
+\href{https://twitter.com/kwbroman}{\tt @kwbroman}
+
 
 \end{frame}
 
