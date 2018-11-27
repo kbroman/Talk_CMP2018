@@ -89,6 +89,38 @@ correspond to those in Figure 2.}
 
 
 
+
+\begin{frame}[c]{}
+
+
+\centering
+\Large
+
+Reproducible
+
+\bigskip
+
+{\color{lolit} vs.}
+
+\bigskip
+
+\only<1>{Replicable}
+\only<2 | handout 0>{Correct}
+
+\end{frame}
+
+
+
+\begin{frame}[c]{Steps toward reproducible research}
+
+  \centering
+  \Large
+
+  \href{https://kbroman.org/steps2rr}{\tt \color{foreground} kbroman.org/steps2rr}
+
+\end{frame}
+
+
 \begin{frame}[c]{1. Organizing data in spreadsheets}
 
 \begin{center}
@@ -172,7 +204,7 @@ Organize data for computers
 
 
 
-\begin{frame}[c]{Organizing data in spreadsheets}
+\begin{frame}[c]{1. Organizing data in spreadsheets}
 
   \begin{itemize}
     \footnotesize
@@ -320,7 +352,271 @@ Data4Tram/        PepIns_2012-02-09/
 
 
 
-\begin{frame}<handout:0>[c]{No ``{\hilit final}'' in file names}
+
+
+\begin{frame}[c]{Naming files}
+
+  \bbi
+\item Concise
+\item Meaningful
+\item No spaces or special characters except underscores and hyphens
+\item Dates like 2018-09-05 (or 20180905)
+\item Sortable
+\item Be consistent
+  \ei
+
+\end{frame}
+
+
+
+\begin{frame}{Also}
+
+  \bbi
+\item Documentation
+  \bi
+\item Detailed electronic notes
+\item Have sympathy for your future self
+\item Maintained to match the material
+  \ei
+\item Meta-data
+  \bi
+\item Data about the data
+\item Yet another spreadsheet
+\item Data dictionary: explain variables, abbreviations, units, codes
+  \ei
+  \ei
+
+\end{frame}
+
+
+
+\begin{frame}[c]{3. Everything with a script}
+
+\centering
+\large
+If you do something once, \\
+you'll do it 1000 times.
+\end{frame}
+
+
+\begin{frame}[c]{Advantages of code}
+
+\end{frame}
+
+
+
+
+\begin{frame}[fragile,c]{4. Automate the process (GNU Make)}
+
+\vspace{15mm}
+
+\begin{center}
+\begin{minipage}[c]{10.8cm}
+\begin{semiverbatim}
+\begin{lstlisting}[escapechar=!,linewidth=10.8cm]
+!{\color{foreground}{R/analysis.html}}!: !{\color{foreground}{R/analysis.Rmd Data/cleandata.csv}}!
+!{\color{foreground}{    cd R;R -e "rmarkdown::render('analysis.Rmd')"}!
+
+Data/cleandata.csv: R/prepData.R RawData/rawdata.csv
+    cd R;R CMD BATCH prepData.R
+
+RawData/rawdata.csv: Python/xls2csv.py RawData/rawdata.xls
+    Python/xls2csv.py RawData/rawdata.xls > RawData/rawdata.csv
+\end{lstlisting}
+\end{semiverbatim}
+\end{minipage}
+\end{center}
+
+\vspace{15mm}
+
+\hfill
+{\footnotesize \lolit
+\href{http://kbroman.org/minimal_make}{\tt kbroman.org/minimal\_make}
+}
+
+
+\end{frame}
+
+
+
+\begin{frame}<handout:0>[fragile,c]{4. Automate the process (GNU Make)}
+
+\addtocounter{framenumber}{-1}
+
+\vspace{15mm}
+
+\begin{center}
+\begin{minipage}[c]{10.8cm}
+\begin{semiverbatim}
+\begin{lstlisting}[escapechar=!,linewidth=10.8cm]
+!{\color{codehilit}{R/analysis.html}}!: !{\color{foreground}{R/analysis.Rmd Data/cleandata.csv}}!
+!{\color{foreground}{    cd R;R -e "rmarkdown::render('analysis.Rmd')"}!
+
+Data/cleandata.csv: R/prepData.R RawData/rawdata.csv
+    cd R;R CMD BATCH prepData.R
+
+RawData/rawdata.csv: Python/xls2csv.py RawData/rawdata.xls
+    Python/xls2csv.py RawData/rawdata.xls > RawData/rawdata.csv
+\end{lstlisting}
+\end{semiverbatim}
+\end{minipage}
+\end{center}
+
+
+\vspace{15mm}
+
+\hfill
+{\footnotesize \lolit
+\href{http://kbroman.org/minimal_make}{\tt kbroman.org/minimal\_make}
+}
+
+\end{frame}
+
+
+
+\begin{frame}<handout:0>[fragile,c]{4. Automate the process (GNU Make)}
+
+\addtocounter{framenumber}{-1}
+
+\vspace{15mm}
+
+\begin{center}
+\begin{minipage}[c]{10.8cm}
+\begin{semiverbatim}
+\begin{lstlisting}[escapechar=!,linewidth=10.8cm]
+!{\color{foreground}{R/analysis.html}}!: !{\color{codehilit}{R/analysis.Rmd Data/cleandata.csv}}!
+!{\color{foreground}{    cd R;R -e "rmarkdown::render('analysis.Rmd')"}!
+
+Data/cleandata.csv: R/prepData.R RawData/rawdata.csv
+    cd R;R CMD BATCH prepData.R
+
+RawData/rawdata.csv: Python/xls2csv.py RawData/rawdata.xls
+    Python/xls2csv.py RawData/rawdata.xls > RawData/rawdata.csv
+\end{lstlisting}
+\end{semiverbatim}
+\end{minipage}
+\end{center}
+
+\vspace{15mm}
+
+\hfill
+{\footnotesize \lolit
+\href{http://kbroman.org/minimal_make}{\tt kbroman.org/minimal\_make}
+}
+
+\end{frame}
+
+
+
+\begin{frame}<handout:0>[fragile,c]{4. Automate the process (GNU Make)}
+
+\addtocounter{framenumber}{-1}
+
+\vspace{15mm}
+
+\begin{center}
+\begin{minipage}[c]{10.8cm}
+\begin{semiverbatim}
+\begin{lstlisting}[escapechar=!,linewidth=10.8cm]
+!{\color{foreground}{R/analysis.html}}!: !{\color{foreground}{R/analysis.Rmd Data/cleandata.csv}}!
+!{\color{codehilit}{    cd R;R -e "rmarkdown::render('analysis.Rmd')"}}!
+
+Data/cleandata.csv: R/prepData.R RawData/rawdata.csv
+    cd R;R CMD BATCH prepData.R
+
+RawData/rawdata.csv: Python/xls2csv.py RawData/rawdata.xls
+    Python/xls2csv.py RawData/rawdata.xls > RawData/rawdata.csv
+\end{lstlisting}
+\end{semiverbatim}
+\end{minipage}
+\end{center}
+
+\vspace{15mm}
+
+\hfill
+{\footnotesize \lolit
+\href{http://kbroman.org/minimal_make}{\tt kbroman.org/minimal\_make}
+}
+
+\end{frame}
+
+
+
+
+
+
+\begin{frame}[c]{5. Turn scripts into reproducible reports}
+
+
+\vspace*{8mm}
+
+\figw{Figs/example_Rmd.png}{0.92}
+\onslide<2>{
+  \vspace*{-0.45\textheight}
+  \hspace*{0.10\textwidth}
+  \figw{Figs/example_Rmd_source.png}{0.92}
+}
+
+\end{frame}
+
+
+
+\begin{frame}[fragile,c]{6. Turn repeated code into functions}
+
+\begin{center}
+\begin{minipage}[c]{10.8cm}
+\begin{semiverbatim}
+\lstset{basicstyle=\large}
+\begin{lstlisting}[linewidth=10.8cm]
+# Python
+def read_genotypes (filename):
+    "Read matrix of genotype data"
+\end{lstlisting}
+\end{semiverbatim}
+\end{minipage}
+\end{center}
+
+\vspace*{-8mm}
+
+\begin{center}
+\begin{minipage}[c]{10.8cm}
+\begin{semiverbatim}
+\lstset{basicstyle=\large}
+\begin{lstlisting}[linewidth=10.8cm]
+# R
+plot_genotypes <-
+function(genotypes, ...)
+{
+}
+\end{lstlisting}
+\end{semiverbatim}
+\end{minipage}
+\end{center}
+
+\end{frame}
+
+
+\begin{frame}[c]{7. Create a package/module}
+
+\onslide<2>{\vspace{24mm}}
+
+  \centering
+  \Large
+  Don't repeat yourself
+
+\onslide<2>{
+\vspace{30mm}
+
+\hfill
+{\footnotesize \lolit
+\href{http://kbroman.org/pkg_primer}{\tt kbroman.org/pkg\_primer}
+}
+}
+
+\end{frame}
+
+
+\begin{frame}<handout:0>[c]{8. Use version control (git/GitHub)}
 
 \vspace*{3mm}
 
@@ -418,42 +714,57 @@ Data4Tram/        PepIns_2012-02-09/
 \end{frame}
 
 
-\begin{frame}[c]{Naming files}
 
-  \bbi
-\item Concise
-\item Meaningful
-\item No spaces or special characters except underscores and hyphens
-\item Dates like 2018-09-05 (or 20180905)
-\item Sortable
-\item Be consistent
-  \ei
+\begin{frame}[c]{8. Use version control (git/GitHub)}
 
-\end{frame}
+\only<1>{\addtocounter{framenumber}{-1}}
 
+\vspace*{3mm}
 
+\centering
 
-\begin{frame}[c]{Also}
+\figh{Figs/example_commit}{0.80}
 
-  \bbi
-\item Documentation
-  \bi
-\item Detailed electronic notes
-\item Have sympathy for your future self
-\item Maintained to match the material
-  \ei
-\item Meta-data
-  \bi
-\item Data about the data
-\item Yet another spreadsheet
-\item Data dictionary: explain variables, abbreviations, units, codes
-  \ei
-  \ei
+\hfill
+{\footnotesize \lolit
+\href{http://kbroman.org/github_tutorial}{\tt kbroman.org/github\_tutorial}
+}
 
 \end{frame}
 
 
 
+\begin{frame}{9. License your software}
+
+\vspace{60pt}
+
+\centerline{\large Pick a license, any license}
+
+\vspace{18pt}
+
+\hfill
+{\textendash} \href{http://blog.codinghorror.com/pick-a-license-any-license/}{Jeff Atwood}
+
+\end{frame}
+
+
+
+\begin{frame}[c]{Summary}
+
+\small
+    \begin{enumerate}
+    \item Arrange data to ease analysis
+    \item Organize your data and code
+    \item Everything with a script
+    \item Automate the process
+    \item Turn scripts into reproducible reports
+    \item Turn repeated code into functions
+    \item Create a package/module
+    \item Use version control
+    \item License your software
+    \end{enumerate}
+
+\end{frame}
 
 
 
