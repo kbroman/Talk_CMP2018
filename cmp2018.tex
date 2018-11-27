@@ -1,0 +1,508 @@
+\documentclass[12pt,t]{beamer}
+\usepackage{graphicx}
+\setbeameroption{hide notes}
+\setbeamertemplate{note page}[plain]
+\usepackage{listings}
+
+\input{header.tex}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% end of header
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% title info
+\title{Data Management}
+\author{\href{https://kbroman.org}{Karl Broman}}
+\institute{Biostatistics \& Medical Informatics \\ Univ.\ Wisconsin{\textendash}Madison}
+\date{\href{https://kbroman.org}{\tt \scriptsize \color{foreground} kbroman.org}
+\\[2pt]
+\scriptsize {\lolit Slides:} \href{https://bit.ly/datamgmt2018}{\tt \scriptsize
+  \color{foreground} bit.ly/datamgmt2018}
+}
+
+
+\begin{document}
+
+% title slide
+{
+\setbeamertemplate{footline}{} % no page number here
+\frame{
+  \titlepage
+
+  \vfill \hfill \includegraphics[height=6mm]{Figs/cc-zero.png} \vspace*{-1cm}
+
+} }
+
+
+\begin{frame}[c]{Outline}
+
+  \bbi
+\item Organizing data within spreadsheets
+\item File organization and naming
+\item Data cleaning
+  \ei
+
+\end{frame}
+
+
+
+\begin{frame}[fragile,c]{}
+
+\begin{center}
+\begin{minipage}[c]{9.3cm}
+\begin{semiverbatim}
+\lstset{basicstyle=\normalsize}
+\begin{lstlisting}[linewidth=9.3cm]
+ Karl -- this is very interesting,
+ however you used an old version of
+ the data (n=143 rather than n=226).
+
+ I'm really sorry you did all that
+ work on the incomplete dataset.
+
+ Bruce
+\end{lstlisting}
+\end{semiverbatim}
+\end{minipage}
+\end{center}
+
+\end{frame}
+
+
+\begin{frame}[c]{}
+\centering
+{\Large The results in Table 1 don't seem to \\[12pt]
+correspond to those in Figure 2.}
+
+\end{frame}
+
+
+
+\begin{frame}[c]{}
+\centerline{\Large Where did we get this data file?}
+\end{frame}
+
+
+
+\begin{frame}[c]{}
+\centerline{\Large Why did I omit those samples?}
+\end{frame}
+
+
+
+\begin{frame}[c]{}
+\centerline{\Large How did I make that figure?}
+\end{frame}
+
+
+
+\begin{frame}[c]{1. Organizing data in spreadsheets}
+
+\begin{center}
+\large
+Organize data for computers
+\end{center}
+
+\end{frame}
+
+
+\begin{frame}{Improve this arrangement?}
+
+\vspace{7mm}
+
+\figh{Figs/spreadsheet_ugly.pdf}{0.6}
+
+\end{frame}
+
+
+
+
+\begin{frame}{Improved arrangement}
+
+\vspace{7mm}
+
+\figh{Figs/spreadsheet_tidy.pdf}{0.6}
+
+\vspace{10mm}
+
+\end{frame}
+
+
+
+\begin{frame}[c]{Organizing data in spreadsheets}
+
+  \begin{itemize}
+    \footnotesize
+  \item Make it a rectangle (rows = observations, cols=variables)
+  \item Use a single header row; avoid spaces.
+  \item Be consistent.
+  \item Use care about dates.
+  \item Put just one thing in a cell.
+  \item Fill in all cells.
+  \item Explicit code for missing values (e.g. {\tt -} or {\tt N/A})
+  \item No calculations/graphs in the raw data files.
+  \item Don't use font color or highlighting as data.
+  \item Make backups.
+  \item Use data validation to avoid data entry mistakes.
+  \item Save the data in plain text files.
+  \end{itemize}
+
+
+\vspace{7mm}
+
+\hfill
+{\footnotesize \lolit
+\href{https://doi.org/10.1080/00031305.2017.1375989}{Broman \& Woo,
+Am Stat 78:2--10, 2018}
+}
+
+
+
+
+\end{frame}
+
+
+
+
+
+\begin{frame}[c]{2. Organizing projects}
+
+\begin{center}
+\large
+File organization and naming \\
+are powerful weapons against chaos.
+\end{center}
+
+\hfill
+{\lolit
+{\textendash} \href{http://www.stat.ubc.ca/~jenny/}{Jenny Bryan}
+}
+
+\end{frame}
+
+
+\begin{frame}[c]{2. Organizing projects}
+
+\begin{center}
+\large
+Your closest collaborator is you six months ago, \\
+but you don't reply to emails.
+\end{center}
+
+\hfill
+{\lolit
+(paraphrasing \href{https://twitter.com/kcranstn/status/370914072511791104}{Mark Holder})
+}
+
+\end{frame}
+
+
+\begin{frame}[c]{2. Organizing projects}
+
+\begin{center}
+\large
+Have sympathy for your future self.
+\end{center}
+
+
+\end{frame}
+
+
+
+
+\begin{frame}[c]{How to organize these files?}
+
+\vspace{5mm}
+
+\figw{Figs/activity2b.png}{1.08}
+
+\end{frame}
+
+
+
+
+\begin{frame}<handout:0>[fragile,c]{Be consistent}
+
+\only<1>{\addtocounter{framenumber}{-1}}
+
+\begin{center}
+\begin{minipage}[c]{10.3cm}
+\begin{semiverbatim}
+\lstset{basicstyle=\normalsize}
+\begin{lstlisting}[linewidth=10.3cm]
+RawData/              Notes/
+CleanData/            Refs/
+
+Python/               ReadMe.txt
+R/                    ToDo.txt
+Ruby/
+\end{lstlisting}
+\end{semiverbatim}
+\end{minipage}
+\end{center}
+
+\end{frame}
+
+
+\begin{frame}<handout:0>[fragile,c]{Chaos}
+
+\addtocounter{framenumber}{-1}
+
+\begin{center}
+\begin{minipage}[c]{11.33cm}
+\begin{semiverbatim}
+\lstset{basicstyle=\scriptsize}
+\begin{lstlisting}[linewidth=11.33cm]
+AimeeNullSims/    Deuterium/            Ping/
+AimeeResults/     ExtractData4Gary/     Ping2/
+AnnotationFiles/  FromAimee/            Ping3/
+Brian/            GoldStandard/         Ping4/
+Chr6_extrageno/   HumanGWAS/            Play/
+Chr6_segdis/      Insulin/              Prdm9/
+ChrisPlaisier/    Int2_for_Mark/        RBM_PlasmaUrine_2012-03-08/
+Code4Aimee/       Islet_2011-05/        Slco1a6/
+CompAnnot/        MappingProbes/        StudyLineupMethods/
+CondScans/        MultiProbes/          kidney_chr6.R
+D2O_2012-02-14/   NewMap/               pck2_sucla2.R
+D2O_cellcycle/    Notes/                penalties.txt
+D2Ocorr/          NullSims/             transeQTL4Lude/
+Data4Aimee/       NullSims_2009-09-10/
+Data4Tram/        PepIns_2012-02-09/
+\end{lstlisting}
+\end{semiverbatim}
+\end{minipage}
+\end{center}
+
+\end{frame}
+
+
+
+\begin{frame}<handout:0>[c]{No ``{\hilit final}'' in file names}
+
+\vspace*{3mm}
+
+\centering
+
+% comic from http://www.phdcomics.com/comics/archive.php?comicid=1531
+\only<1>{\figh{Figs/phd101212s.png}{0.8}}
+
+\end{frame}
+
+
+\begin{frame}<handout:0>[fragile,c]{No ``{\hilit final}'' in file names}
+
+
+\addtocounter{framenumber}{-1}
+
+\begin{center}
+\begin{minipage}[c]{9.5cm}
+\begin{semiverbatim}
+\lstset{basicstyle=\tiny}
+\begin{lstlisting}[escapechar=!,linewidth=9.5cm]
+!{\color{foreground}{Deprecated/                            hypo_prcomp.RData}!
+!{\color{foreground}{ReadMe.txt                             islet_int1_final.RData}!
+!{\color{foreground}{adipose_int1_final.RData               islet_int2_final.RData}!
+!{\color{foreground}{adipose_int2_final.RData               islet_mlratio_final.RData}!
+!{\color{foreground}{adipose_mlratio_final.RData            islet_mlratio_nqrank_final.RData}!
+!{\color{foreground}{adipose_mlratio_nqrank_final.RData     islet_prcomp.RData}!
+!{\color{foreground}{adipose_prcomp.RData                   kidney_int1_final.RData}!
+!{\color{foreground}{aligned_geno_with_pmap.RData           kidney_int2_final.RData}!
+!{\color{foreground}{batches_final.RData                    kidney_mlratio_final.RData}!
+!{\color{foreground}{batches_raw_final.RData                kidney_mlratio_nqrank_final.RData}!
+!{\color{foreground}{cpl_final.RData                        kidney_prcomp.RData}!
+!{\color{foreground}{d2o_final.RData                        lipomics_final_rev2.RData}!
+!{\color{foreground}{gastroc_int1_final.RData               liverTG_final.RData}!
+!{\color{foreground}{gastroc_int2_final.RData               liver_int1_final.RData}!
+!{\color{foreground}{gastroc_mlratio_final.RData            liver_int2_final.RData}!
+!{\color{foreground}{gastroc_mlratio_nqrank_final.RData     liver_mlratio_final.RData}!
+!{\color{foreground}{gastroc_prcomp.RData                   liver_mlratio_nqrank_final.RData}!
+!{\color{foreground}{hypo_int1_final.RData                  liver_prcomp.RData}!
+!{\color{foreground}{hypo_int2_final.RData                  mirna_final.RData}!
+!{\color{foreground}{hypo_mlratio_final.RData               necropsy_final_rev2.RData}!
+!{\color{foreground}{hypo_mlratio_final_old.RData           plasmaurine_final_rev.RData}!
+!{\color{foreground}{hypo_mlratio_nqrank_final.RData        pmark.RData}!
+!{\color{foreground}{hypo_mlratio_nqrank_final_old.RData    rbm_final.RData}!
+!{\color{foreground}{hypo_omit.RData}!
+\end{lstlisting}
+\end{semiverbatim}
+\end{minipage}
+\end{center}
+
+
+\end{frame}
+
+
+\begin{frame}<handout:0>[fragile,c]{No ``{\hilit final}'' in file names}
+
+
+\addtocounter{framenumber}{-1}
+
+\begin{center}
+\begin{minipage}[c]{9.5cm}
+\begin{semiverbatim}
+\lstset{basicstyle=\tiny}
+\begin{lstlisting}[escapechar=!,linewidth=9.5cm]
+!{\color{foreground}{Deprecated/                            hypo_prcomp.RData}!
+!{\color{foreground}{ReadMe.txt                             islet_int1_final.RData}!
+!{\color{foreground}{adipose_int1_final.RData               islet_int2_final.RData}!
+!{\color{foreground}{adipose_int2_final.RData               islet_mlratio_final.RData}!
+!{\color{foreground}{adipose_mlratio_final.RData            islet_mlratio_nqrank_final.RData}!
+!{\color{foreground}{adipose_mlratio_nqrank_final.RData     islet_prcomp.RData}!
+!{\color{foreground}{adipose_prcomp.RData                   kidney_int1_final.RData}!
+!{\color{foreground}{aligned_geno_with_pmap.RData           kidney_int2_final.RData}!
+!{\color{foreground}{batches_final.RData                    kidney_mlratio_final.RData}!
+!{\color{foreground}{batches_raw_final.RData                kidney_mlratio_nqrank_final.RData}!
+!{\color{foreground}{cpl_final.RData                        kidney_prcomp.RData}!
+!{\color{foreground}{d2o_final.RData                       }!!{\color{vhilit} lipomics_final_rev2.RData}!
+!{\color{foreground}{gastroc_int1_final.RData               liverTG_final.RData}!
+!{\color{foreground}{gastroc_int2_final.RData               liver_int1_final.RData}!
+!{\color{foreground}{gastroc_mlratio_final.RData            liver_int2_final.RData}!
+!{\color{foreground}{gastroc_mlratio_nqrank_final.RData     liver_mlratio_final.RData}!
+!{\color{foreground}{gastroc_prcomp.RData                   liver_mlratio_nqrank_final.RData}!
+!{\color{foreground}{hypo_int1_final.RData                  liver_prcomp.RData}!
+!{\color{foreground}{hypo_int2_final.RData                  mirna_final.RData}!
+!{\color{foreground}{hypo_mlratio_final.RData              }!!{\color{vhilit} necropsy_final_rev2.RData}!
+!{\color{vhilit}{hypo_mlratio_final_old.RData           plasmaurine_final_rev.RData}!
+!{\color{foreground}{hypo_mlratio_nqrank_final.RData        pmark.RData}!
+!{\color{vhilit}{hypo_mlratio_nqrank_final_old.RData   }!!{\color{foreground} rbm_final.RData}!
+!{\color{foreground}{hypo_omit.RData}!
+\end{lstlisting}
+\end{semiverbatim}
+\end{minipage}
+\end{center}
+
+
+\end{frame}
+
+
+\begin{frame}[c]{Naming files}
+
+  \bbi
+\item Concise
+\item Meaningful
+\item No spaces or special characters except underscores and hyphens
+\item Dates like 2018-09-05 (or 20180905)
+\item Sortable
+\item Be consistent
+  \ei
+
+\end{frame}
+
+
+
+\begin{frame}[c]{A few more things}
+
+  \bbi
+\item Documentation
+  \bi
+\item Detailed electronic notes
+\item Have sympathy for your future self
+\item Maintained to match the material
+  \ei
+\item Meta-data
+  \bi
+\item Data about the data
+\item Yet another spreadsheet
+\item Data dictionary: explain variables, abbreviations, units, codes
+  \ei
+\item Versions
+  \bi
+  \item Save everything
+  \item Number files like {\tt \_v1}, {\tt \_v2}, ...
+  \ei
+\item Backups
+  \bi
+\item Multiple places (external drives, cloud, server)
+\item Needs to be automatic
+  \ei
+  \ei
+
+\end{frame}
+
+
+
+
+\begin{frame}[c]{3. Data cleaning}
+
+  \bbi
+\item What might have gone wrong?
+\item How could it be revealed?
+\item Make lots of plots
+  \bi
+\item scatterplots
+\item plots against time
+\item consider taking logs
+  \ei
+\item Check consistency between files
+  \ei
+
+\end{frame}
+
+
+\begin{frame}[c]{Batch effect}
+
+
+\only<1>{\figh{Figs/il3.pdf}{0.85}}
+\only<2>{\figh{Figs/il3_log.pdf}{0.85}}
+
+
+\end{frame}
+
+
+
+\begin{frame}[c]{Messed up units}
+
+\figh{Figs/adipose_weight.pdf}{0.85}
+
+
+\end{frame}
+
+
+
+\begin{frame}[c]{Outliers}
+
+\figh{Figs/body_weight.pdf}{0.85}
+
+\end{frame}
+
+
+
+
+\begin{frame}[c]{}
+
+\begin{center}
+\large
+The most important tool is the {\hilit mindset},\\
+when starting, that the end product \\
+will be reproducible.
+\end{center}
+
+\hfill
+{\lolit
+{\textendash} \href{http://odin.mdacc.tmc.edu/~kabaggerly/}{Keith Baggerly}
+}
+
+\end{frame}
+
+
+
+\begin{frame}[c]{Resources}
+
+  \bbi
+\item These slides: \href{https://bit.ly/datamgmt2018}{\tt bit.ly/datamgmt2018} \quad
+\includegraphics[height=5mm]{Figs/cc-zero.png}
+\item \href{https://www.amazon.com/gp/product/B019NDNOMA?ie=UTF8&tag=7210-20}{Briney (2015) Data management for researchers}
+\item Research Data Services,
+  \href{http://researchdata.wisc.edu/}{\tt researchdata.wisc.edu}
+\item Data Science Hub,
+  \href{https://datascience.wisc.edu/}{\tt datascience.wisc.edu}
+\item Data Carpentry workshops,
+  \href{https://datacarpentry.org/}{\tt datacarpentry.org}
+  \ei
+
+\end{frame}
+
+
+
+
+\end{document}
