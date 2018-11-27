@@ -3,7 +3,7 @@
 library(broman)
 
 # read data
-ugly <- read.table("../example_ugly.csv", sep=",",
+ugly <- read.table("example_ugly.csv", sep=",",
                  header=FALSE, stringsAsFactors=FALSE,
                  blank.lines.skip=FALSE,
                  colClasses=character())
@@ -19,7 +19,7 @@ pdf("../Figs/spreadsheet_ugly.pdf", height=6, width=8, pointsize=14)
 excel_fig(ugly, col_names=FALSE)
 dev.off()
 
-tidy <- read.csv("../example_tidy.csv",
+tidy <- read.csv("example_tidy.csv",
                  header=TRUE, stringsAsFactors=FALSE,
                  colClasses=character())
 
